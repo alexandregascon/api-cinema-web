@@ -10,3 +10,8 @@ ul{
     border-bottom: black 1px solid;
     border-top: black 1px solid;
 }
+
+.detail_seance{
+    margin-left: 50px;
+    margin-bottom: 20px;
+}

@@ -9,7 +9,19 @@
         <li>Id: {{ detail.id }}</li>
         <li>Titre: {{ detail.titre }}</li>
         <li>Durée: {{ detail.duree }} min</li>
+        <p></p>
+        Séances pour ce film :
+        <p></p>
+        {% for seance in detail.seances %}
+            <div class="detail_seance">
+                <li>Id de la séance: {{ seance.id }}</li>
+                <li>Date de projection de la séance: {{ seance.dateProj }}</li>
+                <li>Tarif normal de la séance: {{ seance.tarifNormal }}</li>
+                <li>Tarid réduit de la séance: {{ seance.tarifReduit }}</li>
+                <li>Salle de séance: {{ seance.salle.nom }}</li>
+            </div>
+        {% endfor %}
     </ul>
-    <a href="http://127.0.0.1:8001/film">Retour</a>
+    <a href="http://127.0.0.1:8001/">Retour</a>
     {% endfor %}
 {% endblock %}
