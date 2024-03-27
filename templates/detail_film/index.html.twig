@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DetailFilmController!{% endblock %}
+
+{% block body %}
+    <h1 class="mt-0">Détail du film :</h1>
+    {% for detail in film %}
+    <ul>
+        <li>Id: {{ detail.id }}</li>
+        <li>Titre: {{ detail.titre }}</li>
+        <li>Durée: {{ detail.duree }} min</li>
+    </ul>
+    <a href="http://127.0.0.1:8001/film">Retour</a>
+    {% endfor %}
+{% endblock %}
