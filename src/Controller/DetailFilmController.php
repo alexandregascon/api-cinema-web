@@ -22,7 +22,12 @@ class DetailFilmController extends AbstractController
     #[Route('/film/{id}', name: 'app_detail_film')]
     public function index(int $id): Response
     {
+        $position = 0;
         $film = $this->apiFilmDetail->recupFilmsDetail($id);
+        foreach ($film[0]["seances"] as $seance){
+            $film[0]["seances"][$position]["dateProj"] = substr($seance["dateProj"],0,10);
+            $position += 1;
+        }
         return $this->render('detail_film/index.html.twig', [
             'controller_name' => 'DetailFilmController',
             "film"=>$film,
