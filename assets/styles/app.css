@@ -15,3 +15,7 @@ ul{
     margin-left: 50px;
     margin-bottom: 20px;
 }
+
+#user_mdp{
+    width: 180px;
+}
