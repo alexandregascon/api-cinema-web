@@ -39,7 +39,7 @@ class CreerUserController extends AbstractController
                 $this->apiUserCreer->creerUser($form->getData()->getEmail(),$form->getData()->getMdp());
 //                dd($form->isValid());
             }catch(\Exception $e){
-                $erreur = 'erreur2';
+                $erreur = $e->getCode();
 //                 dd($form->getData()->getEmail());
                 return $this->render('creer_user/index.html.twig', [
                     'form' => $form,
