@@ -17,19 +17,24 @@ class ApiUserCreer
     }
     public function creerUser(string $email, string $mdp): array
     {
-        $reponseAPI = $this->client->request(
-            'POST',
-            'http://172.16.208.2:8000/api/user',[
-                'headers' => [
-                    'Accept' => 'application/json',
-                    'Content-Type'=> 'application/json'
-                ],
-                'body'=>json_encode([
-                    "email" => $email,
-                    "mdp" => $mdp
-                ])
-            ]
-        );
-        return $reponseAPI->toArray();
+        try{
+            $reponseAPI = $this->client->request(
+                'POST',
+                'http://172.16.208.2:8000/api/user',[
+                    'headers' => [
+                        'Accept' => 'application/json',
+                        'Content-Type'=> 'application/json'
+                    ],
+                    'body'=>json_encode([
+                        "email" => $email,
+                        "mdp" => $mdp
+                    ])
+                ]
+            );
+            return $reponseAPI->toArray();
+        }catch(\Exception $e){
+            $erreur = json_decode($reponseAPI->getContent(false));
+            return ["code"=>$erreur->code, "message"=>$erreur->message];
+        }
     }
 }

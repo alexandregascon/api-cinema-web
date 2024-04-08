@@ -20,7 +20,7 @@ class UserType extends AbstractType
                 ],
                 "required" => true,
             ])
-            ->add('mdp',\Symfony\Component\Form\Extension\Core\Type\TextType::class,[
+            ->add('mdp',\Symfony\Component\Form\Extension\Core\Type\PasswordType::class,[
                 "label" => "Mot de passe",
                 "attr" => [
                     "placeholder" => "Entrez un mot de passe valide"

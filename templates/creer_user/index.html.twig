@@ -4,17 +4,16 @@
 
 {% block body %}
 
-    {% if erreur is defined %}
-        <p>{{ erreur }}</p>
-        <p>Salut</p>
-    {% endif %}
-
     <h1 class="mt-4 text-center">Créer un User</h1>
     {{ form_start(form) }}
     {{ form_row(form.email) }}
     <div class="mdp">
         {{ form_row(form.mdp) }}
     </div>
+        {% if form.vars.errors is defined %}
+            <p class="erreur">{{ form.vars.errors }}</p>
+        {% endif %}
+{#    {{ form_errors(form.erreur) }}#}
     <button type="submit" class="btn btn-primary">Valider</button>
     {{ form_end(form) }}
 

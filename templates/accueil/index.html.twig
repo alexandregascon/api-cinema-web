@@ -4,12 +4,16 @@
 
 {% block body %}
     <h1 class="mt-0">Liste des Films à l'affiche :</h1>
-    {% for film in films %}
-        <ul>
-            <li>Id: {{ film.id }}</li>
-            <li>Titre: {{ film.titre }}</li>
-            <li>Durée: {{ film.duree }} min</li>
-        </ul>
-        <a href="http://127.0.0.1:8001/film/{{ film.id }}">Détail</a>
-    {% endfor %}
+    <div class="liste-films">
+        {% for film in films %}
+            <div class="card">
+                <ul>
+{#                    <li>Id du film : {{ film.id }}</li>#}
+                    <li>Titre du film : {{ film.titre }}</li>
+                    <li>Durée du film : {{ film.duree }} min</li>
+                </ul>
+                <a href="http://127.0.0.1:8001/film/{{ film.id }}" class="btn-detail">Détail</a>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}

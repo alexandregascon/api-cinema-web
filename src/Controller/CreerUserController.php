@@ -7,6 +7,8 @@ use App\Model\UserModel;
 use App\Service\ApiUserCreer;
 use PhpParser\Builder\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\FormError;
+use Symfony\Component\HttpClient\Exception\ClientException;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -34,26 +36,23 @@ class CreerUserController extends AbstractController
         if($form->isSubmitted() and $form->isValid()){
 //            dd($form->isValid());
             // Traitement des données
-            try{
-//                dd($form->isSubmitted());
-                $this->apiUserCreer->creerUser($form->getData()->getEmail(),$form->getData()->getMdp());
-//                dd($form->isValid());
-            }catch(\Exception $e){
-                $erreur = $e->getCode();
-//                 dd($form->getData()->getEmail());
-                return $this->render('creer_user/index.html.twig', [
-                    'form' => $form,
-                    'erreur'=>$erreur
-                ]);
+            $userData = $form->getData();
+            $reponse = $this->apiUserCreer->creerUser($form->getData()->getEmail(),$form->getData()->getMdp());
+//            dd($reponse);
+            if ($reponse["code"] ===201){
+                return $this->redirectToRoute("app_accueil");
+            } else {
+                $message = $reponse["message"];
+//              $form->get("email")->addError(new FormError($message));
+                $form->addError(new FormError($message));
             }
-            // Ajouter un message flash
-//            $this->addFlash("success","Le user a été enregistrée");
-            return $this->redirectToRoute("app_accueil"); // Redirection vers la route désirée
+            return $this->render('creer_user/index.html.twig', [
+                'form' => $form
+            ]);
         }
 //        dd($form->isSubmitted());
         return $this->render('creer_user/index.html.twig', [
-            'form' => $form,
-            'erreur'=>'erreur'
+            'form' => $form
         ]);
     }
 }

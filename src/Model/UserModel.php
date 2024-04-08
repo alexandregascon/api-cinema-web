@@ -5,7 +5,7 @@ namespace App\Model;
 use Symfony\Component\Validator\Constraints as Assert;
 
 class UserModel{
-    #[Assert\Email]
+//    #[Assert\Email]
     private ?string $email = null;
     private ?string $mdp = null;
 

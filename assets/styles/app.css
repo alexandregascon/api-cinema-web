@@ -1,14 +1,13 @@
 body {
-    background-color: gray;
+    background-color: antiquewhite;
 }
 
 li{
     list-style: none;
 }
 
-ul{
-    border-bottom: black 1px solid;
-    border-top: black 1px solid;
+h1{
+    text-align: center;
 }
 
 .detail_seance{
@@ -18,4 +17,33 @@ ul{
 
 #user_mdp{
     width: 180px;
+}
+
+.erreur{
+    color: red;
+}
+
+.liste-films{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+}
+
+.card{
+    background-color: whitesmoke;
+    border: 1px solid black;
+    margin : 2px;
+    height: 100px;
+}
+
+.btn-detail{
+    background-color: gray;
+    border: 1px solid black;
+    text-decoration: none;
+    color : black;
+    margin-left: 40px;
+    padding : 3px;
+}
+
+.detail_film{
+    background-color: whitesmoke;
 }
