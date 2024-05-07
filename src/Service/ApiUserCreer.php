@@ -15,7 +15,7 @@ class ApiUserCreer
     {
         $this->client = $client;
     }
-    public function creerUser(string $email, string $mdp): array
+    public function creerUser(string $email, string $password): array
     {
         try{
             $reponseAPI = $this->client->request(
@@ -27,7 +27,7 @@ class ApiUserCreer
                     ],
                     'body'=>json_encode([
                         "email" => $email,
-                        "mdp" => $mdp
+                        "password" => $password
                     ])
                 ]
             );
