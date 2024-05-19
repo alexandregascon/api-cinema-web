@@ -20,7 +20,7 @@ class ApiUserCreer
         try{
             $reponseAPI = $this->client->request(
                 'POST',
-                'http://172.16.208.2:8000/api/user',[
+                'http://172.26.144.1:8000/api/user',[
                     'headers' => [
                         'Accept' => 'application/json',
                         'Content-Type'=> 'application/json'
