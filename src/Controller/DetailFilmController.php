@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Service\ApiFilmDetail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Attribute\Route;
 
 class DetailFilmController extends AbstractController
@@ -20,7 +21,7 @@ class DetailFilmController extends AbstractController
     }
 
     #[Route('/film/{id}', name: 'app_detail_film')]
-    public function index(int $id): Response
+    public function index(int $id, SessionInterface $session): Response
     {
         $position = 0;
         $film = $this->apiFilmDetail->recupFilmsDetail($id);

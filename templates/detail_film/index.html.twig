@@ -25,6 +25,13 @@
                         <li>Tarif normal de la séance: {{ seance.tarifNormal }}</li>
                         <li>Tarid réduit de la séance: {{ seance.tarifReduit }}</li>
                         <li>Salle de séance: {{ seance.salle.nom }}</li>
+                        <form method="post">
+                            {#A faire#}
+                            <p>Nombres de places à réserver : </p>
+                            <input type="number" value="réserve">
+                            <p></p>
+                            <button type="submit" class="btn-reserver">Réserver</button>
+                        </form>
                     </ul>
                 </div>
             {% endfor %}
