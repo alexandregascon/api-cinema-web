@@ -20,7 +20,7 @@ class ApiUserConnexion
         try{
             $reponseAPI = $this->client->request(
                 'POST',
-                'http://172.26.144.1:8000/api/login_check',[
+                'http://172.20.192.1:8000/api/login_check',[
                     'headers' => [
                         'Accept' => 'application/json',
                         'Content-Type'=> 'application/json'

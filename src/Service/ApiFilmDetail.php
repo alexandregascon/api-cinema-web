@@ -19,7 +19,7 @@ class ApiFilmDetail
     {
         $reponseAPI = $this->client->request(
             'GET',
-            'http://172.26.144.1:8000/api/film/'.$id
+            'http://172.20.192.1:8000/api/film/'.$id
         );
         return $reponseAPI->toArray();
     }
